@@ -1,129 +1,115 @@
-// This file is part of Desktop App Toolkit,
-// a set of libraries for developing nice desktop applications.
-//
-// For license and copyright information please follow this link:
-// https://github.com/desktop-app/legal/blob/master/LEGAL
-//
+// Fluent Design Style Update for Basic UI
+// This file adapts styles to align with Fluent Design principles.
+// Key elements include transparency, depth, soft shadows, and accent colors.
+
+// edited by fajox, original author preston
+
 using "ui/colors.palette";
 
 TextPalette {
-	linkFg: color;
-	monoFg: color;
-	spoilerFg: color;
-	selectBg: color;
-	selectFg: color;
-	selectLinkFg: color;
-	selectMonoFg: color;
-	selectSpoilerFg: color;
-	selectOverlay: color;
-	linkAlwaysActive: bool;
+    linkFg: accentColor;
+    monoFg: neutralPrimary;
+    spoilerFg: neutralTertiary;
+    selectBg: transparentAccent;
+    selectFg: neutralLighter;
+    selectLinkFg: accentColor;
+    selectMonoFg: neutralPrimaryAlt;
+    selectSpoilerFg: neutralTertiary;
+    selectOverlay: subtleOverlay;
+    linkAlwaysActive: true;
 }
 
 QuoteStyle {
-	padding: margins;
-	verticalSkip: pixels;
-	header: pixels;
-	headerPosition: point;
-	icon: icon;
-	iconPosition: point;
-	expand: icon;
-	expandPosition: point;
-	collapse: icon;
-	collapsePosition: point;
-	outline: pixels;
-	outlineShift: pixels;
-	radius: pixels;
-	scrollable: bool;
+    padding: margins(8px, 12px, 8px, 12px);
+    verticalSkip: 8px;
+    header: 16px;
+    headerPosition: point(8px, 8px);
+    icon: icon {{ "quote_icon", neutralSecondary }};
+    iconPosition: point(4px, 4px);
+    expand: icon {{ "expand_icon", accentColor }};
+    expandPosition: point(8px, 8px);
+    collapse: icon {{ "collapse_icon", accentColor }};
+    collapsePosition: point(8px, 8px);
+    outline: 1px;
+    outlineShift: 2px;
+    radius: 6px;
+    scrollable: true;
 }
 
 TextStyle {
-	font: font;
-	linkUnderline: int;
-	lineHeight: pixels;
-	blockquote: QuoteStyle;
-	pre: QuoteStyle;
+    font: font(fsize, segoeUI);
+    linkUnderline: kLinkUnderlineAlways;
+    lineHeight: 1.5em;
+    blockquote: defaultQuoteStyle;
+    pre: defaultQuoteStyle;
 }
 
 kLinkUnderlineNever: 0;
 kLinkUnderlineActive: 1;
 kLinkUnderlineAlways: 2;
 
-fsize: 13px;
-normalFont: font(fsize);
+fsize: 14px;
+normalFont: font(fsize, segoeUI);
 semiboldFont: font(fsize semibold);
-boxFontSize: 14px;
-boxTextFont: font(boxFontSize);
+boxFontSize: 15px;
+boxTextFont: font(boxFontSize, segoeUI);
 
-emojiSize: 18px;
-emojiPadding: 1px;
+emojiSize: 20px;
+emojiPadding: 2px;
 
-lineWidth: 1px;
+lineWidth: 2px;
 
-defaultTextPalette: TextPalette {
-	linkFg: windowActiveTextFg;
-	monoFg: msgInMonoFg;
-	spoilerFg: msgInDateFg;
-	selectBg: msgInBgSelected;
-	selectFg: transparent; // use painter current pen instead
-	selectLinkFg: historyLinkInFgSelected;
-	selectMonoFg: msgInMonoFgSelected;
-	selectSpoilerFg: msgInDateFgSelected;
-	selectOverlay: msgSelectOverlay;
-}
-defaultQuoteStyle: QuoteStyle {
-}
-defaultTextStyle: TextStyle {
-	font: normalFont;
-	linkUnderline: kLinkUnderlineActive;
-	lineHeight: 0px;
-	blockquote: defaultQuoteStyle;
-	pre: defaultQuoteStyle;
-}
-semiboldTextStyle: TextStyle(defaultTextStyle) {
-	font: semiboldFont;
-}
+accentColor: #0078D7;
+transparentAccent: #0078D740;
+subtleOverlay: #00000020;
+neutralPrimary: #323130;
+neutralSecondary: #605E5C;
+neutralTertiary: #A19F9D;
+neutralPrimaryAlt: #3B3A39;
+neutralLighter: #F3F2F1;
 
-slideDuration: 240;
-slideShift: 100px;
-slideShadow: icon {{ "slide_shadow", slideFadeOutShadowFg }};
+// Applying fluent shadows and motion
+slideDuration: 240ms;
+slideShift: 120px;
+slideShadow: icon {{ "slide_shadow", subtleOverlay }};
 
-slideWrapDuration: 150;
-fadeWrapDuration: 200;
+slideWrapDuration: 180ms;
+fadeWrapDuration: 220ms;
 
-linkCropLimit: 360px;
+linkCropLimit: 400px;
 linkFont: normalFont;
 linkFontOver: font(fsize underline);
 
-roundRadiusLarge: 6px;
-roundRadiusSmall: 3px;
+roundRadiusLarge: 8px;
+roundRadiusSmall: 4px;
 
 dateRadius: roundRadiusLarge;
 
-noContactsHeight: 100px;
-noContactsFont: font(fsize);
-noContactsColor: windowSubTextFg;
+noContactsHeight: 120px;
+noContactsFont: font(fsize, segoeUI);
+noContactsColor: neutralSecondary;
 
-activeFadeInDuration: 500;
-activeFadeOutDuration: 3000;
+activeFadeInDuration: 450ms;
+activeFadeOutDuration: 3500ms;
 
-smallCloseIcon: icon {{ "simple_close", smallCloseIconFg }};
-smallCloseIconOver: icon {{ "simple_close", smallCloseIconFgOver }};
+smallCloseIcon: icon {{ "simple_close", neutralPrimary }};
+smallCloseIconOver: icon {{ "simple_close", accentColor }};
 
-radialSize: size(50px, 50px);
-radialLine: 3px;
-radialDuration: 350;
-radialPeriod: 3000;
+radialSize: size(60px, 60px);
+radialLine: 2px;
+radialDuration: 400ms;
+radialPeriod: 2800ms;
 locationSize: size(320px, 240px);
 
-transparentPlaceholderSize: 4px;
+transparentPlaceholderSize: 5px;
 
-defaultVerticalListSkip: 6px;
+defaultVerticalListSkip: 8px;
 
-shakeShift: 4px;
-shakeDuration: 300;
+shakeShift: 6px;
+shakeDuration: 250ms;
 
-universalDuration: 120;
+universalDuration: 150ms;
 
-// floating badge colors
-roundedFg: radialFg;
-roundedBg: radialBg; // closest to #00000066
+// Floating badge colors
+roundedFg: accentColor;
+roundedBg: transparentAccent;
